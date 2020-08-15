@@ -3,8 +3,6 @@ const prodRoutes = require('./routes/');
 
 const app = express();
 
-const port = process.env.PORT || 8080;
-
 // Add headers
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
@@ -23,9 +21,8 @@ app.use(function (req, res, next) {
 app.use('/v1/api/products', prodRoutes);
 
 app.use('/', (req, res)=> {
-	res.end('Route not found!');
+	res.end('This is Products Microservice runnning on process: ' + process.pid);
 });
 
-app.listen(port, () =>{
-	console.log('Products microservice running on port %s', port);
-});
+
+module.exports = app;
